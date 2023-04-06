@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  service:
+    image: ecommerce-email-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ecommerce-email-service
+    ports:
+      - 1005:8080
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USERNAME=guest
+      - RABBITMQ_PASSWORD=guest
+      - SMTP_HOST=mailhog
+      - SMTP_PORT=1025
+    depends_on:
+      - rabbitmq
+      - mailhog
+    restart: on-failure
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: ecommerce-email-service-rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - 5673:5672
+      - 15673:15672
+    restart: on-failure
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: ecommerce-email-service-mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
