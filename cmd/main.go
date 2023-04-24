@@ -72,7 +72,7 @@ func main() {
 	msgs, err := ch.Consume(
 		q.Name, // queue
 		"",     // consumer
-		false,  // auto-ack
+		true,   // auto-ack
 		false,  // exclusive
 		false,  // no-local
 		false,  // no-wait
@@ -126,17 +126,18 @@ func main() {
 				}
 				continue
 			}
-
-			if err := d.Ack(false); err != nil {
-				logger.Sugar().Errorf("error triggering acknowledgement: %v", err)
-				continue
-			}
 		}
 	}()
 
+	go startHTTPServer(logger, server)
+
+	logger.Info("waiting for emails")
+
+	<-forever
+}
+
+func startHTTPServer(logger *zap.Logger, server *handlers.Server) {
 	if err := server.Start(); err != nil {
 		logger.Sugar().Fatalf("error starting web server: %v", err)
 	}
-
-	<-forever
 }
