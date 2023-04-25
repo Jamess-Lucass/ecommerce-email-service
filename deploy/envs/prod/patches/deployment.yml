@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-email-service-deployment
+spec:
+  template:
+    spec:
+      containers:
+        - name: ecommerce-email-service-container
+          env:
+            - name: RABBITMQ_HOST
+              value: "rabbit-mq.default.svc"
+            - name: RABBITMQ_PORT
+              value: "5672"
+            - name: RABBITMQ_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: rabbit-mq-default-user
+                  key: username
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rabbit-mq-default-user
+                  key: password
+            - name: SMTP_HOST
+              value: "ecommerce-email-service-mailhog-service.default.svc"
+            - name: SMTP_PORT
+              value: "1025"

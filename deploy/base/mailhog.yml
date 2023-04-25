@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-email-service-mailhog-deployment
+  labels:
+    app: ecommerce-email-service-mailhog-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecommerce-email-service-mailhog-deployment
+  template:
+    metadata:
+      labels:
+        app: ecommerce-email-service-mailhog-deployment
+    spec:
+      containers:
+        - name: ecommerce-email-service-mailhog-container
+          image: mailhog/mailhog:latest
+          imagePullPolicy: Always
+          ports:
+            - name: smtp
+              containerPort: 1025
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 100m
+            limits:
+              memory: 200Mi
+              cpu: 200m
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ecommerce-email-service-mailhog-service
+spec:
+  selector:
+    app: ecommerce-email-service-mailhog-deployment
+  ports:
+    - protocol: TCP
+      targetPort: 1025
+      port: 80
