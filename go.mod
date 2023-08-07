@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/go-playground/validator/v10 v10.11.2
-	github.com/gofiber/contrib/fiberzap v0.0.0-20230218180033-0f511457f4b0
+	github.com/gofiber/contrib/fiberzap v1.0.2
 	github.com/gofiber/fiber/v2 v2.42.0
 	github.com/rabbitmq/amqp091-go v1.8.0
 	github.com/valyala/fasthttp v1.44.0
