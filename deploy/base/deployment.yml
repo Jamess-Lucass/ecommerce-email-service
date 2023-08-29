@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ecommerce-email-service-deployment
+  name: ecommerce-email-service
   labels:
-    app: ecommerce-email-service-deployment
+    app: ecommerce-email-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ecommerce-email-service-deployment
+      app: ecommerce-email-service
   template:
     metadata:
       labels:
-        app: ecommerce-email-service-deployment
+        app: ecommerce-email-service
     spec:
       containers:
-        - name: ecommerce-email-service-container
+        - name: ecommerce-email-service
           image: ghcr.io/jamess-lucass/ecommerce-email-service:latest
           imagePullPolicy: Always
           ports:

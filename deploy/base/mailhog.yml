@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ecommerce-email-service-mailhog-deployment
+  name: ecommerce-email-service-mailhog
   labels:
-    app: ecommerce-email-service-mailhog-deployment
+    app: ecommerce-email-service-mailhog
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ecommerce-email-service-mailhog-deployment
+      app: ecommerce-email-service-mailhog
   template:
     metadata:
       labels:
-        app: ecommerce-email-service-mailhog-deployment
+        app: ecommerce-email-service-mailhog
     spec:
       containers:
-        - name: ecommerce-email-service-mailhog-container
+        - name: ecommerce-email-service-mailhog
           image: mailhog/mailhog:latest
           imagePullPolicy: Always
           ports:
@@ -32,10 +32,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: ecommerce-email-service-mailhog-service
+  name: ecommerce-email-service-mailhog
 spec:
   selector:
-    app: ecommerce-email-service-mailhog-deployment
+    app: ecommerce-email-service-mailhog
   ports:
     - protocol: TCP
       targetPort: 1025

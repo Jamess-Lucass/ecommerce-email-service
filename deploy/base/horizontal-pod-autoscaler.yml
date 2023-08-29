@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: ecommerce-email-service-hpa
+  name: ecommerce-email-service
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: ecommerce-email-service-deployment
+    name: ecommerce-email-service
   minReplicas: 1
   maxReplicas: 3
   metrics:

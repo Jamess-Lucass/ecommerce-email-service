@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ecommerce-email-service-service
+  name: ecommerce-email-service
 spec:
   selector:
-    app: ecommerce-email-service-deployment
+    app: ecommerce-email-service
   ports:
     - protocol: TCP
       targetPort: 8080

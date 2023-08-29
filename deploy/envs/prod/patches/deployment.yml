@@ -23,6 +23,6 @@ spec:
                   name: rabbit-mq-default-user
                   key: password
             - name: SMTP_HOST
-              value: "ecommerce-email-service-mailhog-service.default.svc"
+              value: "ecommerce-email-service-mailhog.default.svc"
             - name: SMTP_PORT
               value: "1025"
