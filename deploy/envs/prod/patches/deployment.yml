@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ecommerce-email-service-deployment
+  name: ecommerce-email-service
 spec:
   template:
     spec:
       containers:
-        - name: ecommerce-email-service-container
+        - name: ecommerce-email-service
           env:
             - name: RABBITMQ_HOST
               value: "rabbit-mq.default.svc"
