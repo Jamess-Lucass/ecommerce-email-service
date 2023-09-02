@@ -53,9 +53,10 @@ func main() {
 	}
 	defer ch.Close()
 
+	healthService := services.NewHealthService()
 	emailService := services.NewEmailService(ch)
 
-	server := handlers.NewServer(logger, emailService)
+	server := handlers.NewServer(logger, healthService, emailService)
 
 	q, err := ch.QueueDeclare(
 		"emails", // name

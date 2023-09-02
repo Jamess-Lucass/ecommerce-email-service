@@ -13,6 +13,8 @@ func (s *Server) Start() error {
 		Logger: s.logger,
 	}))
 
+	f.Get("/api/healthz", s.Healthz)
+
 	f.Post("/api/v1/emails", s.SendEmail)
 
 	f.Use(func(c *fiber.Ctx) error {

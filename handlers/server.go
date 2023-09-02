@@ -7,15 +7,21 @@ import (
 )
 
 type Server struct {
-	validator    *validator.Validate
-	logger       *zap.Logger
-	emailService *services.EmailService
+	validator     *validator.Validate
+	logger        *zap.Logger
+	healthService *services.HealthService
+	emailService  *services.EmailService
 }
 
-func NewServer(logger *zap.Logger, emailService *services.EmailService) *Server {
+func NewServer(
+	logger *zap.Logger,
+	healthService *services.HealthService,
+	emailService *services.EmailService,
+) *Server {
 	return &Server{
-		validator:    validator.New(),
-		logger:       logger,
-		emailService: emailService,
+		validator:     validator.New(),
+		logger:        logger,
+		healthService: healthService,
+		emailService:  emailService,
 	}
 }
