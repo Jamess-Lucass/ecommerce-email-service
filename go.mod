@@ -3,7 +3,7 @@ module github.com/Jamess-Lucass/ecommerce-email-service
 go 1.20
 
 require (
-	github.com/go-playground/validator/v10 v10.15.4
+	github.com/go-playground/validator/v10 v10.15.5
 	github.com/gofiber/contrib/fiberzap v1.0.2
 	github.com/gofiber/fiber/v2 v2.49.2
 	github.com/rabbitmq/amqp091-go v1.8.1
