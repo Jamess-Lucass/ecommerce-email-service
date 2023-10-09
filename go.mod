@@ -6,7 +6,7 @@ require (
 	github.com/go-playground/validator/v10 v10.15.4
 	github.com/gofiber/contrib/fiberzap v1.0.2
 	github.com/gofiber/fiber/v2 v2.49.2
-	github.com/rabbitmq/amqp091-go v1.8.1
+	github.com/rabbitmq/amqp091-go v1.9.0
 	github.com/valyala/fasthttp v1.50.0
 	go.uber.org/zap v1.26.0
 )
